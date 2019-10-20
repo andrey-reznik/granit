@@ -20,8 +20,11 @@ html(lang='ru')
             link(rel='stylesheet' href='css/main.css')
 
         <!--[if lt IE 9]>
-        script(type= 'text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js')
+        script(type= 'text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js')        
         <![endif]-->
+        <!--[if IE]><!-->
+        script(type= 'text/javascript' src='https://jonneal.dev/svg4everybody/svg4everybody.min.js')
+        <!--<![endif]-->
 
     body
         .wrapper
@@ -40,5 +43,9 @@ html(lang='ru')
             window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
             ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
         script(src='https://www.google-analytics.com/analytics.js' async)
+        <!--[if IE]><!-->
+        script.
+            svg4everybody();
+        <!--<![endif]-->
 
         block script

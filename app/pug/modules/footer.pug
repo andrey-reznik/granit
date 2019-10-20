@@ -1,0 +1,16 @@
+- var ftr = csec('footer')
+header(id= cov(ftr, ftr.id) class= ftr.name)
+    .container
+        .row
+            +b.logo._white
+                +icon(cov($, ftr.content.logo).img)
+                +e.text-wrapper
+                    +e.SPAN.title= cov($, ftr.content.logo).text
+                    +e.SPAN.description= cov($, ftr.content.logo).description
+                +e.SPAN.copy= ftr.content.copy
+            +b.callback._white
+                +b.phone-wrapper
+                    - var phone = cov($, ftr.content.phone).value
+                    +e.A(href= tel(phone)).text= phone
+                    +e.SPAN.description= cov($, ftr.content.phone).description
+                +b.BUTTON(type= cov($, ftr.content.button).type data-modal= cov($, ftr.content.button).data_modal).btn._transparent-white= cov($, ftr.content.button).value

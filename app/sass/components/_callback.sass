@@ -1,0 +1,31 @@
+.callback
+    $root: &
+    display: flex
+    justify-content: flex-end
+    .phone-wrapper
+        display: flex
+        flex-direction: column
+        text-align: right
+        margin-right: 29px
+        justify-content: space-between
+        &__text
+            font-size: 18px
+            font-weight: 700
+            letter-spacing: .4px
+            text-decoration: none
+        &__description
+            font-size: 11px
+            font-weight: 400
+            letter-spacing: -.1px
+    &_black
+        .phone-wrapper
+            &__text
+                color: #292929
+            &__description
+                color: #969696
+    &_white
+        .phone-wrapper
+            &__text
+                color: #ffffff
+            &__description
+                color: #ffffff

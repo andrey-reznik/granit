@@ -2,7 +2,96 @@ extends ../layout/main
 
 block variables
     - var doc = cdoc('index')
+    - var ibd = '/img/'
     - var title = doc.title
     - var themeColor = doc.color_scheme
 
 block content
+    - var main = csec('main')
+    section(id= cov(main, main.id), class= main.name)
+        .container
+            .row
+                +b.section-title
+                    +e.H1.text!= main.title.text
+                    +e.subtitle!= main.title.subtitle
+            .row
+                .button-wrapper
+                    +b.BUTTON(type= main.button.type data-scroll= main.button.data_scroll).btn= main.button.value
+
+    - var catalog = csec('catalog')
+    section(id= cov(catalog, catalog.id), class= catalog.name)
+        .container
+            .row
+                +b.section-title
+                    +e.H2.text!= catalog.title.text
+            .row
+                each i in catalog.items
+                    +b.catalog-item
+                        +e.IMG(src= ibd + i.img alt= i.img.replace('.png', '') title= i.title )
+                        +e.SPAN.title= i.title
+                        +e.P.description= i.description
+                        +e.SPAN.price= i.price
+                        +b.BUTTON(type= i.button.type).btn= i.button.value
+
+    - var advantages = csec('advantages')
+    section(id= cov(advantages, advantages.id), class= advantages.name)
+        .container
+            .row
+                +b.section-title
+                    +e.H2.text!= advantages.title.text
+            .row
+                each a in advantages.items
+                    +b.advantages-item
+                        +e.IMG(src= ibd + a.icon alt= a.icon.replace('.png', '') title= a.title)
+                        +e.SPAN.title= a.title
+                        +e.P.description!= a.description
+
+    - var popular_items = csec('popular-items')
+    section(id= cov(popular_items, popular_items.id), class= popular_items.name)
+        .container
+            .row
+                +b.section-title
+                    +e.H2.text!= popular_items.title.text
+            .row
+                each pi in popular_items.items
+                    +b.popular-item
+                        +e.IMG(src= ibd + pi.img alt= pi.img.replace('.png', '') title= pi.title)
+                        if pi.price.old
+                            +e.SPAN.is-stock= pi.stock_text
+                        +e.SPAN.title!= pi.title
+                        +e.price(class= pi.class)
+                            if pi.price.old
+                                +e.SPAN.old-price= pi.price.old
+                            +e.SPAN.current-price= pi.price.current
+                        +b.BUTTON(type= pi.button.type).btn= pi.button.value
+
+    - var services = csec('services')
+    section(id= cov(services, services.id), class= services.name)
+        .container
+            .row
+                +b.section-title
+                    +e.H2.text!= services.title.text
+            .row
+                each s in services.items
+                    +b.service-item
+                        +e.IMG(src= ibd + s.img alt=s.img.replace('.png', '') title=s.title )
+                        +e.SPAN.title= s.title
+
+    - var contacts = csec('contacts')
+    section(id= cov(contacts, contacts.id), class= contacts.name)
+        .container
+            .row
+                +b.contacts-container
+                    +e.H2.title!= contacts.title.text
+                    +e.phones-container
+                        +icon(contacts.content.phone.icon)
+                        +e.phone-content
+                            each phone in contacts.content.phone.value
+                                +e.A(href= tel(phone)).phone= phone
+                    +e.address-container
+                        +icon(contacts.content.address.icon)
+                        +e.P.address!= contacts.content.address.value
+                    +e.email-container
+                        +icon(contacts.content.email.icon)
+                        +e.A(href= 'mailto:' + contacts.content.email.value).email!= contacts.content.email.value
+    include ../modules/modals

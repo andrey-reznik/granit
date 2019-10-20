@@ -1,0 +1,25 @@
+- var hdr = csec('header')
+header(id= cov(hdr, hdr.id) class= hdr.name)
+    .container
+        .row
+            +b.logo._black
+                +icon(hdr.content.logo.img)
+                +e.text-wrapper
+                    +e.SPAN.title= hdr.content.logo.text
+                    +e.SPAN.description= hdr.content.logo.description
+            +b.callback._black
+                +b.phone-wrapper
+                    - var phone = hdr.content.phone.value
+                    +e.A(href= tel(phone)).text= phone
+                    +e.SPAN.description= hdr.content.phone.description
+                +b.BUTTON(type= hdr.content.button.type data-modal= hdr.content.button.data_modal).btn._transparent= hdr.content.button.value
+        .row
+            a.hamburger-icon(href='#')
+                span.line.line-1
+                span.line.line-2
+                span.line.line-3
+            nav.navbar
+                +b.UL.menu
+                    each n in hdr.content.navbar
+                        +e.LI.item
+                            +e.A(href= n.link data-scroll= n.link).link= n.value

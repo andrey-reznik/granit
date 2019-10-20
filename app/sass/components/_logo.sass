@@ -1,0 +1,35 @@
+.logo
+    display: flex
+    $root: &
+    .icon
+        max-width: 38px
+        max-height: 40px
+        min-width: 38px
+        min-height: 40px
+    &__text-wrapper
+        display: flex
+        margin-left: 14px
+        flex-direction: column
+        // justify-content: space-between
+    &__title
+        text-transform: uppercase
+        font-weight: 700
+        font-size: 20px
+        letter-spacing: 2px
+    &__description
+        margin-top: 1px
+        font-size: 11px
+        font-weight: 300
+        letter-spacing: -.1px
+    &_black
+        .icon
+            fill: #292929
+        #{$root}__title
+            color: #292929
+        #{$root}__description        
+            color: #969696
+    &_white
+        .icon
+            fill: #ffffff
+        #{$root}__title, #{$root}__description
+            color: #ffffff
