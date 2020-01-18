@@ -1,9 +1,0 @@
-each ms in _.query($, '$.sections[*].modals')
-    each m in ms
-        .modal-container(id= m.name)
-            - let form = m.form
-            +b.modal-window
-                +e.header
-                    +e.close-button
-                +e.body
-                    +form(form)
